@@ -1,0 +1,1 @@
+truncate staging.price_log;

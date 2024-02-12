@@ -1,0 +1,102 @@
+[2024-02-12 10:06:04,375] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart_inc.get_report scheduled__2024-02-05T10:05:47.421232+00:00 [queued]>
+[2024-02-12 10:06:04,380] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart_inc.get_report scheduled__2024-02-05T10:05:47.421232+00:00 [queued]>
+[2024-02-12 10:06:04,380] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-12 10:06:04,380] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2024-02-12 10:06:04,380] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-12 10:06:04,385] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): get_report> on 2024-02-05 10:05:47.421232+00:00
+[2024-02-12 10:06:04,388] {standard_task_runner.py:52} INFO - Started process 18739 to run task
+[2024-02-12 10:06:04,390] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart_inc', 'get_report', 'scheduled__2024-02-05T10:05:47.421232+00:00', '--job-id', '400', '--raw', '--subdir', 'DAGS_FOLDER/sales_mart_inc.py', '--cfg-path', '/tmp/tmpdteto7wz', '--error-file', '/tmp/tmpky2denzq']
+[2024-02-12 10:06:04,390] {standard_task_runner.py:80} INFO - Job 400: Subtask get_report
+[2024-02-12 10:06:04,421] {task_command.py:369} INFO - Running <TaskInstance: sales_mart_inc.get_report scheduled__2024-02-05T10:05:47.421232+00:00 [running]> on host 91766ce79ef0
+[2024-02-12 10:06:04,457] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart_inc
+AIRFLOW_CTX_TASK_ID=get_report
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-05T10:05:47.421232+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-02-05T10:05:47.421232+00:00
+[2024-02-12 10:06:04,458] {logging_mixin.py:115} INFO - Making request get_report
+[2024-02-12 10:06:05,603] {logging_mixin.py:115} INFO - Response is b'{"task_id":"MjAyNC0wMi0xMlQxMDowNjowMwlkYW1pci1rYWxpbmluNw==","status":"RUNNING","data":{"report_id":null,"start_day":null,"end_date":null,"s3_path":{}}}'
+[2024-02-12 10:06:16,629] {logging_mixin.py:115} INFO - Response is b'{"task_id":"MjAyNC0wMi0xMlQxMDowNjowMwlkYW1pci1rYWxpbmluNw==","status":"RUNNING","data":{"report_id":null,"start_day":null,"end_date":null,"s3_path":{}}}'
+[2024-02-12 10:06:26,895] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/lib/python3.8/dist-packages/urllib3/connectionpool.py", line 449, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/usr/local/lib/python3.8/dist-packages/urllib3/connectionpool.py", line 444, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/lib/python3.8/http/client.py", line 1348, in getresponse
+    response.begin()
+  File "/usr/lib/python3.8/http/client.py", line 316, in begin
+    version, status, reason = self._read_status()
+  File "/usr/lib/python3.8/http/client.py", line 277, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/lib/python3.8/socket.py", line 669, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/lib/python3.8/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.8/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+ConnectionResetError: [Errno 104] Connection reset by peer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/requests/adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "/usr/local/lib/python3.8/dist-packages/urllib3/connectionpool.py", line 785, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.8/dist-packages/urllib3/util/retry.py", line 550, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/local/lib/python3.8/dist-packages/urllib3/packages/six.py", line 769, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/local/lib/python3.8/dist-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/lib/python3.8/dist-packages/urllib3/connectionpool.py", line 449, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 3, in raise_from
+  File "/usr/local/lib/python3.8/dist-packages/urllib3/connectionpool.py", line 444, in _make_request
+    httplib_response = conn.getresponse()
+  File "/usr/lib/python3.8/http/client.py", line 1348, in getresponse
+    response.begin()
+  File "/usr/lib/python3.8/http/client.py", line 316, in begin
+    version, status, reason = self._read_status()
+  File "/usr/lib/python3.8/http/client.py", line 277, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "/usr/lib/python3.8/socket.py", line 669, in readinto
+    return self._sock.recv_into(b)
+  File "/usr/lib/python3.8/ssl.py", line 1241, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.8/ssl.py", line 1099, in read
+    return self._sslobj.read(len, buffer)
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/usr/local/lib/python3.8/dist-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/lessons/dags/sales_mart_inc.py", line 48, in get_report
+    response = requests.get(f'{base_url}/get_report?task_id={task_id}', headers=headers)
+  File "/usr/local/lib/python3.8/dist-packages/requests/api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/requests/sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/requests/adapters.py", line 501, in send
+    raise ConnectionError(err, request=request)
+requests.exceptions.ConnectionError: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+[2024-02-12 10:06:26,907] {taskinstance.py:1395} INFO - Marking task as FAILED. dag_id=sales_mart_inc, task_id=get_report, execution_date=20240205T100547, start_date=20240212T100604, end_date=20240212T100626
+[2024-02-12 10:06:26,912] {standard_task_runner.py:92} ERROR - Failed to execute job 400 for task get_report (('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer')); 18739)
+[2024-02-12 10:06:26,921] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-02-12 10:06:26,948] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

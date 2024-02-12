@@ -1,0 +1,53 @@
+[2024-02-11 22:54:13,679] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.update_f_sales scheduled__2024-02-04T22:52:38.597307+00:00 [queued]>
+[2024-02-11 22:54:13,684] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.update_f_sales scheduled__2024-02-04T22:52:38.597307+00:00 [queued]>
+[2024-02-11 22:54:13,684] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-11 22:54:13,684] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2024-02-11 22:54:13,684] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-11 22:54:13,690] {taskinstance.py:1377} INFO - Executing <Task(PostgresOperator): update_f_sales> on 2024-02-04 22:52:38.597307+00:00
+[2024-02-11 22:54:13,692] {standard_task_runner.py:52} INFO - Started process 46637 to run task
+[2024-02-11 22:54:13,694] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart', 'update_f_sales', 'scheduled__2024-02-04T22:52:38.597307+00:00', '--job-id', '1135', '--raw', '--subdir', 'DAGS_FOLDER/sprint3 copy.py', '--cfg-path', '/tmp/tmp0a3gom9v', '--error-file', '/tmp/tmp53qk1v0m']
+[2024-02-11 22:54:13,694] {standard_task_runner.py:80} INFO - Job 1135: Subtask update_f_sales
+[2024-02-11 22:54:13,724] {task_command.py:369} INFO - Running <TaskInstance: sales_mart.update_f_sales scheduled__2024-02-04T22:52:38.597307+00:00 [running]> on host 2a8d1eb5116f
+[2024-02-11 22:54:13,757] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart
+AIRFLOW_CTX_TASK_ID=update_f_sales
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-04T22:52:38.597307+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-02-04T22:52:38.597307+00:00
+[2024-02-11 22:54:13,763] {base.py:68} INFO - Using connection ID 'postgresql_de' for task execution.
+[2024-02-11 22:54:13,766] {sql.py:315} INFO - Running statement: insert into mart.f_sales (date_id, item_id, customer_id, city_id, quantity, payment_amount)
+select 
+    dc.date_id, 
+    item_id, 
+    customer_id, 
+    city_id, 
+    quantity, 
+case when uol.status=='refunded'  then payment_amount*-1 else payment_amount end as payment_amount
+from staging.user_order_log uol
+left join mart.d_calendar as dc on uol.date_time::Date = dc.date_actual
+where uol.date_time::Date = '2024-02-04';, parameters: {'date': ('{{ ds }}',)}
+[2024-02-11 22:54:13,767] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/airflow/providers/postgres/operators/postgres.py", line 94, in execute
+    self.hook.run(self.sql, self.autocommit, parameters=self.parameters)
+  File "/usr/local/lib/python3.8/dist-packages/airflow/providers/common/sql/hooks/sql.py", line 295, in run
+    self._run_command(cur, sql_statement, parameters)
+  File "/usr/local/lib/python3.8/dist-packages/airflow/providers/common/sql/hooks/sql.py", line 318, in _run_command
+    cur.execute(sql_statement, parameters)
+psycopg2.errors.UndefinedFunction: operator does not exist: character varying == unknown
+LINE 8: case when uol.status=='refunded'  then payment_amount*-1 els...
+                            ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+[2024-02-11 22:54:13,773] {taskinstance.py:1395} INFO - Marking task as FAILED. dag_id=sales_mart, task_id=update_f_sales, execution_date=20240204T225238, start_date=20240211T225413, end_date=20240211T225413
+[2024-02-11 22:54:13,779] {standard_task_runner.py:92} ERROR - Failed to execute job 1135 for task update_f_sales (operator does not exist: character varying == unknown
+LINE 8: case when uol.status=='refunded'  then payment_amount*-1 els...
+                            ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+; 46637)
+[2024-02-11 22:54:13,785] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-02-11 22:54:13,804] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,25 @@
+[2024-02-12 09:51:13,675] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.truncate_price_log manual__2024-02-12T09:51:07.647434+00:00 [queued]>
+[2024-02-12 09:51:13,681] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.truncate_price_log manual__2024-02-12T09:51:07.647434+00:00 [queued]>
+[2024-02-12 09:51:13,681] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-12 09:51:13,681] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2024-02-12 09:51:13,681] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-12 09:51:13,688] {taskinstance.py:1377} INFO - Executing <Task(PostgresOperator): truncate_price_log> on 2024-02-12 09:51:07.647434+00:00
+[2024-02-12 09:51:13,691] {standard_task_runner.py:52} INFO - Started process 17340 to run task
+[2024-02-12 09:51:13,692] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart', 'truncate_price_log', 'manual__2024-02-12T09:51:07.647434+00:00', '--job-id', '368', '--raw', '--subdir', 'DAGS_FOLDER/sales_mart.py', '--cfg-path', '/tmp/tmptcxpb9ph', '--error-file', '/tmp/tmp3caam8k1']
+[2024-02-12 09:51:13,692] {standard_task_runner.py:80} INFO - Job 368: Subtask truncate_price_log
+[2024-02-12 09:51:13,728] {task_command.py:369} INFO - Running <TaskInstance: sales_mart.truncate_price_log manual__2024-02-12T09:51:07.647434+00:00 [running]> on host 91766ce79ef0
+[2024-02-12 09:51:13,765] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart
+AIRFLOW_CTX_TASK_ID=truncate_price_log
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-12T09:51:07.647434+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-02-12T09:51:07.647434+00:00
+[2024-02-12 09:51:13,772] {base.py:68} INFO - Using connection ID 'postgresql_de' for task execution.
+[2024-02-12 09:51:13,775] {sql.py:315} INFO - Running statement: truncate staging.price_log;, parameters: None
+[2024-02-12 09:51:13,789] {taskinstance.py:1395} INFO - Marking task as SUCCESS. dag_id=sales_mart, task_id=truncate_price_log, execution_date=20240212T095107, start_date=20240212T095113, end_date=20240212T095113
+[2024-02-12 09:51:13,824] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-02-12 09:51:13,849] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

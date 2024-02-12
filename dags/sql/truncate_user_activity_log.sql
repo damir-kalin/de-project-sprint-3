@@ -1,0 +1,1 @@
+truncate staging.user_activity_log;

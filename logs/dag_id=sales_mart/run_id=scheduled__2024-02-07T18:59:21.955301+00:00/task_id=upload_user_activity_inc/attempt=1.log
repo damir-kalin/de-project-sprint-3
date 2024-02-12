@@ -1,0 +1,32 @@
+[2024-02-11 19:03:50,771] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.upload_user_activity_inc scheduled__2024-02-07T18:59:21.955301+00:00 [queued]>
+[2024-02-11 19:03:50,777] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.upload_user_activity_inc scheduled__2024-02-07T18:59:21.955301+00:00 [queued]>
+[2024-02-11 19:03:50,777] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-11 19:03:50,777] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2024-02-11 19:03:50,777] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-11 19:03:50,784] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): upload_user_activity_inc> on 2024-02-07 18:59:21.955301+00:00
+[2024-02-11 19:03:50,787] {standard_task_runner.py:52} INFO - Started process 14117 to run task
+[2024-02-11 19:03:50,789] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart', 'upload_user_activity_inc', 'scheduled__2024-02-07T18:59:21.955301+00:00', '--job-id', '314', '--raw', '--subdir', 'DAGS_FOLDER/sprint3.py', '--cfg-path', '/tmp/tmp1fllql8h', '--error-file', '/tmp/tmpecjd7i5c']
+[2024-02-11 19:03:50,789] {standard_task_runner.py:80} INFO - Job 314: Subtask upload_user_activity_inc
+[2024-02-11 19:03:50,820] {task_command.py:369} INFO - Running <TaskInstance: sales_mart.upload_user_activity_inc scheduled__2024-02-07T18:59:21.955301+00:00 [running]> on host 2a8d1eb5116f
+[2024-02-11 19:03:50,858] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart
+AIRFLOW_CTX_TASK_ID=upload_user_activity_inc
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-07T18:59:21.955301+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-02-07T18:59:21.955301+00:00
+[2024-02-11 19:03:50,866] {logging_mixin.py:115} INFO - https://storage.yandexcloud.net/s3-sprint3/cohort_22/damir-kalinin7/project/MjAyNC0wMi0wN1QwMDowMDowMAlUV3BCZVU1RE1IZE5hVEI0VFZaUmVFOVViM2ROVkc5NFRWRnNhMWxYTVhCamFURnlXVmQ0Y0dKdGJIVk9kejA5/user_activity_log_inc.csv
+[2024-02-11 19:03:50,866] {logging_mixin.py:115} INFO - 20240207_user_activity_log_inc.csv
+[2024-02-11 19:03:51,173] {logging_mixin.py:115} INFO - b'id,uniq_id,date_time,action_id,customer_id,quantity\r\n1,2810e76cfb67e7321b06829ccbff1258,2024-02-07T00:00:00,1,291,6\r\n2,71e40335419eb01f861aa29d721d5fde,2024-02-07T00:00:00,2,820,6\r\n3,377046050a18c1c0d484e47a8a924d63,2024-02-07T00:00:00,1,60,0\r\n4,d384dc2a4a7a0e2f3bdde96000c5e6e4,2024-02-07T00:00:00,0,670,0\r\n5,05bc4e3541bdb086c91df45a4df652d4,2024-02-07T00:00:00,1,550,0\r\n6,826c14525c82dc7063d71e6583086447,2024-02-07T00:00:00,2,601,20\r\n7,59b71de26436aea7c9ff139eabe8ef62,2024-02-07T00:00:00,0,770,22\r\n8,3b69a08643a36fd2d9c18f16398d82e1,2024-02-07T00:00:00,0,100,20\r\n9,cdfd942e9ef21d1c8cb99731034a7ce2,2024-02-07T00:00:00,3,421,19\r\n10,89757acd293c9bd4f5ae5897d474965b,2024-02-07T00:00:00,0,790,4\r\n11,ba1c68f5db88a159779858cccf62bb80,2024-02-07T00:00:00,3,910,23\r\n12,8345ef142e5a6230bdc67841b0a7c1e3,2024-02-07T00:00:00,0,250,14\r\n13,269d530224b1d5618d34d9afd0894f06,2024-02-07T00:00:00,1,400,24\r\n14,6c1ca63caf3879027fe49960d474dc88,2024-02-07T00:00:00,1,570,24\r\n15,d5190762399b0be0eddec4013a5138f3,2024-02-07T00:00:00,3,891,22\r\n16,5c28dab1a712811ee43efa26faedec6e,2024-02-07T00:00:00,2,141,7\r\n17,7119e3dce11f33dfa447fca268b9671a,2024-02-07T00:00:00,2,441,12\r\n18,62553b8568bf68a62a69649374fb5357,2024-02-07T00:00:00,0,861,8\r\n19,0cfd0497ae0fafb390b364a3dc7a1072,2024-02-07T00:00:00,0,830,13\r\n'
+[2024-02-11 19:03:51,178] {logging_mixin.py:115} INFO - Index(['uniq_id', 'date_time', 'action_id', 'customer_id', 'quantity'], dtype='object')
+[2024-02-11 19:03:51,187] {base.py:68} INFO - Using connection ID 'postgresql_de' for task execution.
+[2024-02-11 19:03:51,199] {logging_mixin.py:115} INFO - 19 rows was inserted
+[2024-02-11 19:03:51,199] {python.py:173} INFO - Done. Returned value was: None
+[2024-02-11 19:03:51,207] {taskinstance.py:1395} INFO - Marking task as SUCCESS. dag_id=sales_mart, task_id=upload_user_activity_inc, execution_date=20240207T185921, start_date=20240211T190350, end_date=20240211T190351
+[2024-02-11 19:03:51,243] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-02-11 19:03:51,267] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-02-11 19:03:51,282] {dagrun.py:562} INFO - Marking run <DagRun sales_mart @ 2024-02-07 18:59:21.955301+00:00: scheduled__2024-02-07T18:59:21.955301+00:00, externally triggered: False> successful
+[2024-02-11 19:03:51,282] {dagrun.py:607} INFO - DagRun Finished: dag_id=sales_mart, execution_date=2024-02-07 18:59:21.955301+00:00, run_id=scheduled__2024-02-07T18:59:21.955301+00:00, run_start_date=2024-02-11 18:59:47.499624+00:00, run_end_date=2024-02-11 19:03:51.282395+00:00, run_duration=243.782771, state=success, external_trigger=False, run_type=scheduled, data_interval_start=2024-02-07 18:59:21.955301+00:00, data_interval_end=2024-02-08 18:59:21.955301+00:00, dag_hash=641194df1fcea064c380dc17ced955e1

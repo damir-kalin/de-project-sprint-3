@@ -1,0 +1,47 @@
+[2024-02-11 19:03:38,074] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.upload_user_activity_inc scheduled__2024-02-06T18:59:21.955301+00:00 [queued]>
+[2024-02-11 19:03:38,080] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.upload_user_activity_inc scheduled__2024-02-06T18:59:21.955301+00:00 [queued]>
+[2024-02-11 19:03:38,080] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-11 19:03:38,080] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2024-02-11 19:03:38,080] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-11 19:03:38,085] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): upload_user_activity_inc> on 2024-02-06 18:59:21.955301+00:00
+[2024-02-11 19:03:38,088] {standard_task_runner.py:52} INFO - Started process 13953 to run task
+[2024-02-11 19:03:38,090] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart', 'upload_user_activity_inc', 'scheduled__2024-02-06T18:59:21.955301+00:00', '--job-id', '309', '--raw', '--subdir', 'DAGS_FOLDER/sprint3.py', '--cfg-path', '/tmp/tmpibddd0y_', '--error-file', '/tmp/tmpl55bt_ba']
+[2024-02-11 19:03:38,090] {standard_task_runner.py:80} INFO - Job 309: Subtask upload_user_activity_inc
+[2024-02-11 19:03:38,121] {task_command.py:369} INFO - Running <TaskInstance: sales_mart.upload_user_activity_inc scheduled__2024-02-06T18:59:21.955301+00:00 [running]> on host 2a8d1eb5116f
+[2024-02-11 19:03:38,156] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart
+AIRFLOW_CTX_TASK_ID=upload_user_activity_inc
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-06T18:59:21.955301+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-02-06T18:59:21.955301+00:00
+[2024-02-11 19:03:38,163] {logging_mixin.py:115} INFO - https://storage.yandexcloud.net/s3-sprint3/cohort_22/damir-kalinin7/project/MjAyNC0wMi0wNlQwMDowMDowMAlUV3BCZVU1RE1IZE5hVEI0VFZaUmVFOVViM2ROUkc4eFRuZHNhMWxYTVhCamFURnlXVmQ0Y0dKdGJIVk9kejA5/user_activity_log_inc.csv
+[2024-02-11 19:03:38,163] {logging_mixin.py:115} INFO - 20240206_user_activity_log_inc.csv
+[2024-02-11 19:03:38,424] {logging_mixin.py:115} INFO - b'id,uniq_id,date_time,action_id,customer_id,quantity\r\n1,8625047afe9b9500fdcc2622f4487c5c,2024-02-06T00:00:00,1,580,1\r\n2,13712e0337444ebed09d1e04cab6d388,2024-02-06T00:00:00,1,270,4\r\n3,6e58cc199c712ace7f15d5546e05c98d,2024-02-06T00:00:00,1,500,18\r\n4,1880c23031e4852403de4ae9900acad1,2024-02-06T00:00:00,2,510,15\r\n5,d7d261a389304c7dce8c437705ad5c96,2024-02-06T00:00:00,3,530,9\r\n6,58e05b348e854cfa6126d871a45d2848,2024-02-06T00:00:00,1,411,19\r\n7,87510133b76375078ad71f1667e09bb8,2024-02-06T00:00:00,0,281,15\r\n8,c4797d76d9be68bcd1c602f50ba2689e,2024-02-06T00:00:00,2,730,14\r\n9,d448fb0070c3afba9f94476292a05f6f,2024-02-06T00:00:00,1,520,5\r\n10,a4c72fb9ab74ea64678d2238cc8db288,2024-02-06T00:00:00,0,51,13\r\n11,936608a6f91428c81834c3dde3557fd8,2024-02-06T00:00:00,3,130,7\r\n12,9048dc93631fbcc3e8968c9885a1f327,2024-02-06T00:00:00,2,600,4\r\n13,89df70384ba8535003e7eb5783deacf2,2024-02-06T00:00:00,2,440,5\r\n'
+[2024-02-11 19:03:38,428] {logging_mixin.py:115} INFO - Index(['uniq_id', 'date_time', 'action_id', 'customer_id', 'quantity'], dtype='object')
+[2024-02-11 19:03:38,428] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/usr/local/lib/python3.8/dist-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/lessons/dags/sprint3.py", line 102, in upload_data_to_staging
+    df=df.drop_duplicates(subset=['uniq_id'])
+  File "/usr/local/lib/python3.8/dist-packages/pandas/util/_decorators.py", line 311, in wrapper
+    return func(*args, **kwargs)
+  File "/usr/local/lib/python3.8/dist-packages/pandas/core/frame.py", line 4948, in drop
+    return super().drop(
+  File "/usr/local/lib/python3.8/dist-packages/pandas/core/generic.py", line 4279, in drop
+    obj = obj._drop_axis(labels, axis, level=level, errors=errors)
+  File "/usr/local/lib/python3.8/dist-packages/pandas/core/generic.py", line 4323, in _drop_axis
+    new_axis = axis.drop(labels, errors=errors)
+  File "/usr/local/lib/python3.8/dist-packages/pandas/core/indexes/base.py", line 6644, in drop
+    raise KeyError(f"{list(labels[mask])} not found in axis")
+KeyError: "['id'] not found in axis"
+[2024-02-11 19:03:38,437] {taskinstance.py:1395} INFO - Marking task as FAILED. dag_id=sales_mart, task_id=upload_user_activity_inc, execution_date=20240206T185921, start_date=20240211T190338, end_date=20240211T190338
+[2024-02-11 19:03:38,443] {standard_task_runner.py:92} ERROR - Failed to execute job 309 for task upload_user_activity_inc ("['id'] not found in axis"; 13953)
+[2024-02-11 19:03:38,463] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-02-11 19:03:38,482] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

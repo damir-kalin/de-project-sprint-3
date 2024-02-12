@@ -1,0 +1,25 @@
+[2024-02-12 07:45:12,111] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart_inc.truncate_user_activity_log scheduled__2024-02-05T07:44:56.593240+00:00 [queued]>
+[2024-02-12 07:45:12,116] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart_inc.truncate_user_activity_log scheduled__2024-02-05T07:44:56.593240+00:00 [queued]>
+[2024-02-12 07:45:12,116] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-12 07:45:12,116] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2024-02-12 07:45:12,116] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-12 07:45:12,122] {taskinstance.py:1377} INFO - Executing <Task(PostgresOperator): truncate_user_activity_log> on 2024-02-05 07:44:56.593240+00:00
+[2024-02-12 07:45:12,125] {standard_task_runner.py:52} INFO - Started process 7038 to run task
+[2024-02-12 07:45:12,126] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart_inc', 'truncate_user_activity_log', 'scheduled__2024-02-05T07:44:56.593240+00:00', '--job-id', '141', '--raw', '--subdir', 'DAGS_FOLDER/sales_mart_inc.py', '--cfg-path', '/tmp/tmpma0xafgv', '--error-file', '/tmp/tmpq6wubh51']
+[2024-02-12 07:45:12,127] {standard_task_runner.py:80} INFO - Job 141: Subtask truncate_user_activity_log
+[2024-02-12 07:45:12,158] {task_command.py:369} INFO - Running <TaskInstance: sales_mart_inc.truncate_user_activity_log scheduled__2024-02-05T07:44:56.593240+00:00 [running]> on host 91766ce79ef0
+[2024-02-12 07:45:12,194] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart_inc
+AIRFLOW_CTX_TASK_ID=truncate_user_activity_log
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-05T07:44:56.593240+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-02-05T07:44:56.593240+00:00
+[2024-02-12 07:45:12,202] {base.py:68} INFO - Using connection ID 'postgresql_de' for task execution.
+[2024-02-12 07:45:12,205] {sql.py:315} INFO - Running statement: truncate staging.user_activity_log;, parameters: None
+[2024-02-12 07:45:12,216] {taskinstance.py:1395} INFO - Marking task as SUCCESS. dag_id=sales_mart_inc, task_id=truncate_user_activity_log, execution_date=20240205T074456, start_date=20240212T074512, end_date=20240212T074512
+[2024-02-12 07:45:12,258] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-02-12 07:45:12,284] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

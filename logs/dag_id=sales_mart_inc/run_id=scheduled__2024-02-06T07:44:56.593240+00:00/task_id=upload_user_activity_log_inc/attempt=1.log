@@ -1,0 +1,30 @@
+[2024-02-12 07:48:02,708] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart_inc.upload_user_activity_log_inc scheduled__2024-02-06T07:44:56.593240+00:00 [queued]>
+[2024-02-12 07:48:02,714] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart_inc.upload_user_activity_log_inc scheduled__2024-02-06T07:44:56.593240+00:00 [queued]>
+[2024-02-12 07:48:02,714] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-12 07:48:02,714] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2024-02-12 07:48:02,714] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-12 07:48:02,721] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): upload_user_activity_log_inc> on 2024-02-06 07:44:56.593240+00:00
+[2024-02-12 07:48:02,724] {standard_task_runner.py:52} INFO - Started process 7906 to run task
+[2024-02-12 07:48:02,725] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart_inc', 'upload_user_activity_log_inc', 'scheduled__2024-02-06T07:44:56.593240+00:00', '--job-id', '164', '--raw', '--subdir', 'DAGS_FOLDER/sales_mart_inc.py', '--cfg-path', '/tmp/tmp7x7tvaw7', '--error-file', '/tmp/tmpcso5767k']
+[2024-02-12 07:48:02,725] {standard_task_runner.py:80} INFO - Job 164: Subtask upload_user_activity_log_inc
+[2024-02-12 07:48:02,758] {task_command.py:369} INFO - Running <TaskInstance: sales_mart_inc.upload_user_activity_log_inc scheduled__2024-02-06T07:44:56.593240+00:00 [running]> on host 91766ce79ef0
+[2024-02-12 07:48:02,796] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart_inc
+AIRFLOW_CTX_TASK_ID=upload_user_activity_log_inc
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-06T07:44:56.593240+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-02-06T07:44:56.593240+00:00
+[2024-02-12 07:48:02,805] {logging_mixin.py:115} INFO - https://storage.yandexcloud.net/s3-sprint3/cohort_22/damir-kalinin7/project/MjAyNC0wMi0wNlQwMDowMDowMAlUV3BCZVU1RE1IZE5hVEI0VFd4UmQwNTZiekJPYW04d1RsRnNhMWxYTVhCamFURnlXVmQ0Y0dKdGJIVk9kejA5/user_activity_log_inc.csv
+[2024-02-12 07:48:02,805] {logging_mixin.py:115} INFO - 20240206_user_activity_log_inc.csv
+[2024-02-12 07:48:03,130] {logging_mixin.py:115} INFO - b'id,uniq_id,date_time,action_id,customer_id,quantity\r\n1,8625047afe9b9500fdcc2622f4487c5c,2024-02-06T00:00:00,1,580,1\r\n2,13712e0337444ebed09d1e04cab6d388,2024-02-06T00:00:00,1,270,4\r\n3,6e58cc199c712ace7f15d5546e05c98d,2024-02-06T00:00:00,1,500,18\r\n4,1880c23031e4852403de4ae9900acad1,2024-02-06T00:00:00,2,510,15\r\n5,d7d261a389304c7dce8c437705ad5c96,2024-02-06T00:00:00,3,530,9\r\n6,58e05b348e854cfa6126d871a45d2848,2024-02-06T00:00:00,1,411,19\r\n7,87510133b76375078ad71f1667e09bb8,2024-02-06T00:00:00,0,281,15\r\n8,c4797d76d9be68bcd1c602f50ba2689e,2024-02-06T00:00:00,2,730,14\r\n9,d448fb0070c3afba9f94476292a05f6f,2024-02-06T00:00:00,1,520,5\r\n10,a4c72fb9ab74ea64678d2238cc8db288,2024-02-06T00:00:00,0,51,13\r\n11,936608a6f91428c81834c3dde3557fd8,2024-02-06T00:00:00,3,130,7\r\n12,9048dc93631fbcc3e8968c9885a1f327,2024-02-06T00:00:00,2,600,4\r\n13,89df70384ba8535003e7eb5783deacf2,2024-02-06T00:00:00,2,440,5\r\n'
+[2024-02-12 07:48:03,136] {logging_mixin.py:115} INFO - Index(['uniq_id', 'date_time', 'action_id', 'customer_id', 'quantity'], dtype='object')
+[2024-02-12 07:48:03,142] {base.py:68} INFO - Using connection ID 'postgresql_de' for task execution.
+[2024-02-12 07:48:03,155] {logging_mixin.py:115} INFO - 13 rows was inserted
+[2024-02-12 07:48:03,156] {python.py:173} INFO - Done. Returned value was: None
+[2024-02-12 07:48:03,163] {taskinstance.py:1395} INFO - Marking task as SUCCESS. dag_id=sales_mart_inc, task_id=upload_user_activity_log_inc, execution_date=20240206T074456, start_date=20240212T074802, end_date=20240212T074803
+[2024-02-12 07:48:03,179] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-02-12 07:48:03,203] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

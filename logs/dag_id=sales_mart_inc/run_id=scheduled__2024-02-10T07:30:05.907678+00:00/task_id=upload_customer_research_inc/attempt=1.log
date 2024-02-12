@@ -1,0 +1,31 @@
+[2024-02-12 07:38:21,174] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart_inc.upload_customer_research_inc scheduled__2024-02-10T07:30:05.907678+00:00 [queued]>
+[2024-02-12 07:38:21,179] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart_inc.upload_customer_research_inc scheduled__2024-02-10T07:30:05.907678+00:00 [queued]>
+[2024-02-12 07:38:21,179] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-12 07:38:21,179] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2024-02-12 07:38:21,179] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-12 07:38:21,184] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): upload_customer_research_inc> on 2024-02-10 07:30:05.907678+00:00
+[2024-02-12 07:38:21,187] {standard_task_runner.py:52} INFO - Started process 5864 to run task
+[2024-02-12 07:38:21,188] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart_inc', 'upload_customer_research_inc', 'scheduled__2024-02-10T07:30:05.907678+00:00', '--job-id', '111', '--raw', '--subdir', 'DAGS_FOLDER/sprint3 copy 2.py', '--cfg-path', '/tmp/tmpnl8alqr3', '--error-file', '/tmp/tmpxou_c5au']
+[2024-02-12 07:38:21,189] {standard_task_runner.py:80} INFO - Job 111: Subtask upload_customer_research_inc
+[2024-02-12 07:38:21,219] {task_command.py:369} INFO - Running <TaskInstance: sales_mart_inc.upload_customer_research_inc scheduled__2024-02-10T07:30:05.907678+00:00 [running]> on host 91766ce79ef0
+[2024-02-12 07:38:21,256] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart_inc
+AIRFLOW_CTX_TASK_ID=upload_customer_research_inc
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-10T07:30:05.907678+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-02-10T07:30:05.907678+00:00
+[2024-02-12 07:38:21,257] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/usr/local/lib/python3.8/dist-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+TypeError: upload_data_to_staging() missing 1 required positional argument: 'b_inc'
+[2024-02-12 07:38:21,264] {taskinstance.py:1395} INFO - Marking task as FAILED. dag_id=sales_mart_inc, task_id=upload_customer_research_inc, execution_date=20240210T073005, start_date=20240212T073821, end_date=20240212T073821
+[2024-02-12 07:38:21,271] {standard_task_runner.py:92} ERROR - Failed to execute job 111 for task upload_customer_research_inc (upload_data_to_staging() missing 1 required positional argument: 'b_inc'; 5864)
+[2024-02-12 07:38:21,280] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-02-12 07:38:21,306] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

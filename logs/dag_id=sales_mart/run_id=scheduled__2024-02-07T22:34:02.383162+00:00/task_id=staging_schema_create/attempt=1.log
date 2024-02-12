@@ -1,0 +1,79 @@
+[2024-02-11 22:39:10,071] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.staging_schema_create scheduled__2024-02-07T22:34:02.383162+00:00 [queued]>
+[2024-02-11 22:39:10,076] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.staging_schema_create scheduled__2024-02-07T22:34:02.383162+00:00 [queued]>
+[2024-02-11 22:39:10,076] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-11 22:39:10,076] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2024-02-11 22:39:10,076] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-11 22:39:10,082] {taskinstance.py:1377} INFO - Executing <Task(PostgresOperator): staging_schema_create> on 2024-02-07 22:34:02.383162+00:00
+[2024-02-11 22:39:10,086] {standard_task_runner.py:52} INFO - Started process 44656 to run task
+[2024-02-11 22:39:10,087] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart', 'staging_schema_create', 'scheduled__2024-02-07T22:34:02.383162+00:00', '--job-id', '1085', '--raw', '--subdir', 'DAGS_FOLDER/sprint3 copy.py', '--cfg-path', '/tmp/tmpz_fwcsk6', '--error-file', '/tmp/tmpreoebwid']
+[2024-02-11 22:39:10,088] {standard_task_runner.py:80} INFO - Job 1085: Subtask staging_schema_create
+[2024-02-11 22:39:10,120] {task_command.py:369} INFO - Running <TaskInstance: sales_mart.staging_schema_create scheduled__2024-02-07T22:34:02.383162+00:00 [running]> on host 2a8d1eb5116f
+[2024-02-11 22:39:10,158] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart
+AIRFLOW_CTX_TASK_ID=staging_schema_create
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-07T22:34:02.383162+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-02-07T22:34:02.383162+00:00
+[2024-02-11 22:39:10,164] {base.py:68} INFO - Using connection ID 'postgresql_de' for task execution.
+[2024-02-11 22:39:10,168] {sql.py:315} INFO - Running statement: create schema if not exists staging;
+
+CREATE table if not exists staging.user_order_log (
+	uniq_id varchar(32) NOT NULL,
+	date_time timestamp NOT NULL,
+	city_id int4 NOT NULL,
+	city_name varchar(100) NULL,
+	customer_id int4 NOT NULL,
+	first_name varchar(100) NULL,
+	last_name varchar(100) NULL,
+	item_id int4 NOT NULL,
+	item_name varchar(100) NULL,
+	quantity int8 NULL,
+	payment_amount numeric(10, 2) NULL,
+	status varchar(15),
+	CONSTRAINT user_order_log_pk PRIMARY KEY (uniq_id)
+);
+CREATE INDEX if not exists uo1 ON staging.user_order_log USING btree (customer_id);
+CREATE INDEX if not exists uo2 ON staging.user_order_log USING btree (item_id);
+
+
+create table if not exists staging.customer_research(
+	date_id timestamp,
+	category_id int,
+	geo_id int,
+	sales_qty int,
+	sales_amt numeric(14,2)
+);
+
+create table if not exists staging.user_activity_log(
+	uniq_id varchar(100),
+	action_id bigint,
+	customer_id bigint,
+	date_time timestamp,
+	quantity bigint
+);
+
+create table if not exists staging.price_log(
+	name varchar(100),
+	price int
+);, parameters: None
+[2024-02-11 22:39:10,168] {postgres.py:96} INFO - NOTICE:  schema "staging" already exists, skipping
+
+[2024-02-11 22:39:10,168] {postgres.py:96} INFO - NOTICE:  relation "user_order_log" already exists, skipping
+
+[2024-02-11 22:39:10,168] {postgres.py:96} INFO - NOTICE:  relation "uo1" already exists, skipping
+
+[2024-02-11 22:39:10,168] {postgres.py:96} INFO - NOTICE:  relation "uo2" already exists, skipping
+
+[2024-02-11 22:39:10,168] {postgres.py:96} INFO - NOTICE:  relation "customer_research" already exists, skipping
+
+[2024-02-11 22:39:10,168] {postgres.py:96} INFO - NOTICE:  relation "user_activity_log" already exists, skipping
+
+[2024-02-11 22:39:10,168] {postgres.py:96} INFO - NOTICE:  relation "price_log" already exists, skipping
+
+[2024-02-11 22:39:10,178] {taskinstance.py:1395} INFO - Marking task as SUCCESS. dag_id=sales_mart, task_id=staging_schema_create, execution_date=20240207T223402, start_date=20240211T223910, end_date=20240211T223910
+[2024-02-11 22:39:10,219] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-02-11 22:39:10,244] {local_task_job.py:273} INFO - 4 downstream tasks scheduled from follow-on schedule check

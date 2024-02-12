@@ -1,0 +1,36 @@
+[2024-02-12 06:56:19,211] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.update_f_sales manual__2024-02-12T06:54:47.245678+00:00 [queued]>
+[2024-02-12 06:56:19,218] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.update_f_sales manual__2024-02-12T06:54:47.245678+00:00 [queued]>
+[2024-02-12 06:56:19,219] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-12 06:56:19,219] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2024-02-12 06:56:19,219] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-12 06:56:19,225] {taskinstance.py:1377} INFO - Executing <Task(PostgresOperator): update_f_sales> on 2024-02-12 06:54:47.245678+00:00
+[2024-02-12 06:56:19,227] {standard_task_runner.py:52} INFO - Started process 2148 to run task
+[2024-02-12 06:56:19,229] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart', 'update_f_sales', 'manual__2024-02-12T06:54:47.245678+00:00', '--job-id', '28', '--raw', '--subdir', 'DAGS_FOLDER/sprint3 copy.py', '--cfg-path', '/tmp/tmpdrs5cwkt', '--error-file', '/tmp/tmpx_y4n9ay']
+[2024-02-12 06:56:19,230] {standard_task_runner.py:80} INFO - Job 28: Subtask update_f_sales
+[2024-02-12 06:56:19,265] {task_command.py:369} INFO - Running <TaskInstance: sales_mart.update_f_sales manual__2024-02-12T06:54:47.245678+00:00 [running]> on host 91766ce79ef0
+[2024-02-12 06:56:19,307] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart
+AIRFLOW_CTX_TASK_ID=update_f_sales
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-12T06:54:47.245678+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2024-02-12T06:54:47.245678+00:00
+[2024-02-12 06:56:19,314] {base.py:68} INFO - Using connection ID 'postgresql_de' for task execution.
+[2024-02-12 06:56:19,319] {sql.py:315} INFO - Running statement: insert into mart.f_sales (date_id, item_id, customer_id, city_id, quantity, payment_amount)
+select 
+    dc.date_id, 
+    item_id, 
+    customer_id, 
+    city_id, 
+    quantity, 
+case when uol.status='refunded'  then payment_amount*-1 else payment_amount end as payment_amount
+from staging.user_order_log uol
+left join mart.d_calendar as dc on uol.date_time::Date = dc.date_actual
+where uol.date_time::Date = '2024-02-12';, parameters: {'date': ('{{ ds }}',)}
+[2024-02-12 06:56:19,320] {sql.py:324} INFO - Rows affected: 0
+[2024-02-12 06:56:19,329] {taskinstance.py:1395} INFO - Marking task as SUCCESS. dag_id=sales_mart, task_id=update_f_sales, execution_date=20240212T065447, start_date=20240212T065619, end_date=20240212T065619
+[2024-02-12 06:56:19,361] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-02-12 06:56:19,383] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

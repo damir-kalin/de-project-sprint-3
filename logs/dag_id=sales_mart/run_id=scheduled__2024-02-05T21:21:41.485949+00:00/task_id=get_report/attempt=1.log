@@ -1,0 +1,37 @@
+[2024-02-11 21:23:23,392] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.get_report scheduled__2024-02-05T21:21:41.485949+00:00 [queued]>
+[2024-02-11 21:23:23,398] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart.get_report scheduled__2024-02-05T21:21:41.485949+00:00 [queued]>
+[2024-02-11 21:23:23,398] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-11 21:23:23,398] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2024-02-11 21:23:23,398] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-11 21:23:23,404] {taskinstance.py:1377} INFO - Executing <Task(PythonOperator): get_report> on 2024-02-05 21:21:41.485949+00:00
+[2024-02-11 21:23:23,408] {standard_task_runner.py:52} INFO - Started process 30838 to run task
+[2024-02-11 21:23:23,410] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart', 'get_report', 'scheduled__2024-02-05T21:21:41.485949+00:00', '--job-id', '734', '--raw', '--subdir', 'DAGS_FOLDER/sprint3 copy.py', '--cfg-path', '/tmp/tmpuh_lac57', '--error-file', '/tmp/tmpgxspolvw']
+[2024-02-11 21:23:23,410] {standard_task_runner.py:80} INFO - Job 734: Subtask get_report
+[2024-02-11 21:23:23,444] {task_command.py:369} INFO - Running <TaskInstance: sales_mart.get_report scheduled__2024-02-05T21:21:41.485949+00:00 [running]> on host 2a8d1eb5116f
+[2024-02-11 21:23:23,484] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart
+AIRFLOW_CTX_TASK_ID=get_report
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-05T21:21:41.485949+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-02-05T21:21:41.485949+00:00
+[2024-02-11 21:23:23,484] {logging_mixin.py:115} INFO - Making request get_report
+[2024-02-11 21:23:23,743] {logging_mixin.py:115} INFO - Response is b'{"task_id":"MjAyNC0wMi0xMVQyMToyMzoyMglkYW1pci1rYWxpbmluNw==","status":"RUNNING","data":{"report_id":null,"start_day":null,"end_date":null,"s3_path":{}}}'
+[2024-02-11 21:23:34,433] {taskinstance.py:1889} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/airflow/operators/python.py", line 171, in execute
+    return_value = self.execute_callable()
+  File "/usr/local/lib/python3.8/dist-packages/airflow/operators/python.py", line 189, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/lessons/dags/sprint3 copy.py", line 48, in get_report
+    response.raise_for_status()
+  File "/usr/local/lib/python3.8/dist-packages/requests/models.py", line 960, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 502 Server Error: Bad Gateway for url: https://d5dg1j9kt695d30blp03.apigw.yandexcloud.net/get_report?task_id=MjAyNC0wMi0xMVQyMToyMzoyMglkYW1pci1rYWxpbmluNw==
+[2024-02-11 21:23:34,441] {taskinstance.py:1395} INFO - Marking task as FAILED. dag_id=sales_mart, task_id=get_report, execution_date=20240205T212141, start_date=20240211T212323, end_date=20240211T212334
+[2024-02-11 21:23:34,448] {standard_task_runner.py:92} ERROR - Failed to execute job 734 for task get_report (502 Server Error: Bad Gateway for url: https://d5dg1j9kt695d30blp03.apigw.yandexcloud.net/get_report?task_id=MjAyNC0wMi0xMVQyMToyMzoyMglkYW1pci1rYWxpbmluNw==; 30838)
+[2024-02-11 21:23:34,472] {local_task_job.py:156} INFO - Task exited with return code 1
+[2024-02-11 21:23:34,497] {local_task_job.py:273} INFO - 0 downstream tasks scheduled from follow-on schedule check

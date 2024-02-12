@@ -1,0 +1,1 @@
+truncate staging.customer_research;

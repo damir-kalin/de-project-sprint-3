@@ -1,0 +1,29 @@
+[2024-02-12 14:05:19,586] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart_inc.update_d_customer scheduled__2024-02-06T14:01:59.240675+00:00 [queued]>
+[2024-02-12 14:05:19,590] {taskinstance.py:1159} INFO - Dependencies all met for <TaskInstance: sales_mart_inc.update_d_customer scheduled__2024-02-06T14:01:59.240675+00:00 [queued]>
+[2024-02-12 14:05:19,590] {taskinstance.py:1356} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-12 14:05:19,590] {taskinstance.py:1357} INFO - Starting attempt 1 of 1
+[2024-02-12 14:05:19,590] {taskinstance.py:1358} INFO - 
+--------------------------------------------------------------------------------
+[2024-02-12 14:05:19,596] {taskinstance.py:1377} INFO - Executing <Task(PostgresOperator): update_d_customer> on 2024-02-06 14:01:59.240675+00:00
+[2024-02-12 14:05:19,599] {standard_task_runner.py:52} INFO - Started process 28358 to run task
+[2024-02-12 14:05:19,600] {standard_task_runner.py:79} INFO - Running: ['airflow', 'tasks', 'run', 'sales_mart_inc', 'update_d_customer', 'scheduled__2024-02-06T14:01:59.240675+00:00', '--job-id', '550', '--raw', '--subdir', 'DAGS_FOLDER/sales_mart_inc.py', '--cfg-path', '/tmp/tmp42w072f7', '--error-file', '/tmp/tmpp_uk4uf8']
+[2024-02-12 14:05:19,600] {standard_task_runner.py:80} INFO - Job 550: Subtask update_d_customer
+[2024-02-12 14:05:19,631] {task_command.py:369} INFO - Running <TaskInstance: sales_mart_inc.update_d_customer scheduled__2024-02-06T14:01:59.240675+00:00 [running]> on host 91766ce79ef0
+[2024-02-12 14:05:19,665] {taskinstance.py:1569} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_EMAIL=student@example.com
+AIRFLOW_CTX_DAG_OWNER=student
+AIRFLOW_CTX_DAG_ID=sales_mart_inc
+AIRFLOW_CTX_TASK_ID=update_d_customer
+AIRFLOW_CTX_EXECUTION_DATE=2024-02-06T14:01:59.240675+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2024-02-06T14:01:59.240675+00:00
+[2024-02-12 14:05:19,671] {base.py:68} INFO - Using connection ID 'postgresql_de' for task execution.
+[2024-02-12 14:05:19,675] {sql.py:315} INFO - Running statement: insert into mart.d_customer (customer_id, first_name, last_name, city_id)
+select customer_id, first_name, last_name, max(city_id) from staging.user_order_log
+where customer_id not in (select customer_id from mart.d_customer)
+group by customer_id, first_name, last_name, parameters: None
+[2024-02-12 14:05:19,676] {sql.py:324} INFO - Rows affected: 9
+[2024-02-12 14:05:19,685] {taskinstance.py:1395} INFO - Marking task as SUCCESS. dag_id=sales_mart_inc, task_id=update_d_customer, execution_date=20240206T140159, start_date=20240212T140519, end_date=20240212T140519
+[2024-02-12 14:05:19,692] {local_task_job.py:156} INFO - Task exited with return code 0
+[2024-02-12 14:05:19,714] {local_task_job.py:273} INFO - 1 downstream tasks scheduled from follow-on schedule check

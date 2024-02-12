@@ -1,0 +1,1 @@
+truncate staging.user_order_log;
